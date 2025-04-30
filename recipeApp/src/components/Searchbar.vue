@@ -1,5 +1,5 @@
 <script setup>
-    import '../assets/body.css'
+    import '../assets/searchbar.css'
 </script>
 
 <template>

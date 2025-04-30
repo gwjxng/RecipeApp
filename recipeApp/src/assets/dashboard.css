@@ -1,3 +1,13 @@
+.create-recipe {
+    padding-top: 1vw;
+    padding-left: 40vw; 
+    border-radius: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: underline;
+}
+
 .dashboard {
     display: flex;
     justify-content: center;
@@ -38,4 +48,20 @@
     display: flex;
     justify-content: center;
     color: #333;
+  }
+
+  .page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:1vw;
+  }
+
+  .page-number {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
