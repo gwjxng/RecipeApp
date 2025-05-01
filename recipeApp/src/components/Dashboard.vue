@@ -3,7 +3,7 @@
     import { onMounted } from 'vue'
     import { useDashboardLogic } from './dashboardLogic.js'
 
-    const { stats, currentPage, totalPages } = useDashboardLogic()
+    const { recipes, currentPage, totalPages } = useDashboardLogic()
 </script>
 
 <template>
@@ -12,9 +12,9 @@
     </div>
     <h2>Recipes</h2>
     <div class="dashboard">
-        <div class="dashboard-card" v-for="(item, index) in stats" :key="index">
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.value }}</p>
+        <div class="dashboard-card" v-for="(item, index) in recipes" :key="index">
+            <p>{{ item.title }}</p>
+            <h3>{{ item.creator_name }}</h3>
         </div>
     </div>
     <div class = "page">

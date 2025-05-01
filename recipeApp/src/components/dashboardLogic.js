@@ -1,21 +1,27 @@
 import { ref, onMounted, watch } from 'vue'
+import axios from 'axios'
+import { API_BASE_URL } from '../components/config.js'
 
-export function useDashboardLogic(totalPages = 5, emitPageChanged = null) {
+export function useDashboardLogic(totalPages=5, emitPageChanged = null) {
 
-  const stats = ref([
-    { title: 'Total Recipes', value: 120 },
-    { title: 'Categories', value: 8 },
-    { title: 'Users', value: 24 },
-  ])
+    const recipes = ref([])
+
+    axios.get(`${API_BASE_URL}/recipes`)
+      .then(
+        response => {recipes.value = response.data})
+      .catch(error => {
+        console.error('Error fetching recipes:', error)
+      })
   
   const currentPage = ref(1)
   onMounted(() => {
-    console.log('Dashboard loaded with stats:', stats.value)
+    console.log('Dashboard loaded with recipes:', recipes)
   })
 
   return {
-    stats,
+    recipes,
     currentPage,
     totalPages,
   }
 }
+

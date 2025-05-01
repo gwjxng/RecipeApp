@@ -28,6 +28,7 @@
   
   .dashboard-card:hover {
     transform: translateY(-5px);
+    cursor: pointer;
   }
   
   .dashboard-card h3 {

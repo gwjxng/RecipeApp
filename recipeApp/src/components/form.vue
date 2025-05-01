@@ -2,25 +2,35 @@
     import '../assets/form.css';
     import { useFormLogic } from '../components/form.js';
 
-    const { selectedDifficulty, imageUrl, fileInput, handleImageUpload, deleteImage } = useFormLogic();
+    const { 
+        selectedDifficulty, 
+        recipeTitle, 
+        recipeDescription, 
+        recipeIngredients, 
+        imageUrl, 
+        fileInput, 
+        handleImageUpload, 
+        deleteImage, 
+        handleSave 
+    } = useFormLogic()
 </script>
 
 <template>
     <div class="form-body">
         <div class="form-container">
             <h2 class="form-title">Create a New Recipe</h2>
-            <form class="recipe-form">
+            <form class="recipe-form" @submit="handleSave">
                 <div class="form-group">
                     <label for="recipe-name" class="form-label">Title:</label>
-                    <input type="text" id="recipe-name" class="form-input" required />
+                    <input type="text" id="recipe-name" class="form-input" v-model="recipeTitle"  required />
                 </div>
                 <div class="form-group">
                     <label for="ingredients" class="form-label">Ingredients:</label>
-                    <textarea id="ingredients" class="form-textarea" required></textarea>
+                    <textarea id="ingredients" class="form-textarea" v-model="recipeIngredients"  required></textarea>
                 </div>
                 <div class="form-group">    
                     <label for="instructions" class="form-label">Instructions:</label>
-                    <textarea id="instructions" class="form-textarea" required></textarea>
+                    <textarea id="instructions" class="form-textarea" v-model="recipeDescription" required></textarea>
                 </div>    
                 <div class="form-group">
                     <label for="difficulty" class="form-label">Difficulty:</label>
