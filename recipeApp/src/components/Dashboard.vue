@@ -1,6 +1,5 @@
 <script setup>
     import '../assets/dashboard.css'
-    import { onMounted } from 'vue'
     import { useDashboardLogic } from './dashboardLogic.js'
 
     const { recipes, currentPage, totalPages } = useDashboardLogic()
@@ -12,9 +11,14 @@
     </div>
     <h2>Recipes</h2>
     <div class="dashboard">
-        <div class="dashboard-card" v-for="(item, index) in recipes" :key="index">
-            <p>{{ item.title }}</p>
-            <h3>{{ item.creator_name }}</h3>
+        <div class="dashboard-card" v-for="(item, index) in recipes" 
+        :key="index"
+        :style="item.image_url ? { backgroundImage: 'url(' + item.image_url + ')', backgroundSize: 'cover', backgroundPosition: 'center' } : {}">
+            <router-link :to="{ name: 'ViewForm', params: { recipeId: item.id } }" class="card-content">
+                <p>{{ item.title }}</p>
+                <h3>{{ item.creator_name }}</h3>
+                <h3> {{ item.created_date }}   </h3>
+            </router-link>
         </div>
     </div>
     <div class = "page">

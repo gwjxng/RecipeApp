@@ -1,10 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../Webpages/Home.vue'
-import CreateForm from '../Webpages/createRecipe.vue' // or wherever your form component lives
+import CreateForm from '../Webpages/createRecipe.vue'
+import ViewForm from '../Webpages/viewRecipe.vue'
 
 const routes = [
-  { path: '/', name: 'Home', component: Home },
-  { path: '/create-recipe', name: 'CreateForm', component: CreateForm }
+  { path: '/', 
+    name: 'Home', 
+    component: Home 
+  },
+  { path: '/create-recipe', 
+    name: 'CreateForm', 
+    component: CreateForm 
+  },
+  {
+    path: '/view-recipe/:recipeId',
+    name: 'ViewForm',
+    component: ViewForm,
+    props: true
+  }
 ]
 
 const router = createRouter({

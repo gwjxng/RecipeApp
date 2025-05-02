@@ -21,7 +21,7 @@ export function useDashboardLogic(totalPages=5, emitPageChanged = null) {
   return {
     recipes,
     currentPage,
-    totalPages,
+    totalPages
   }
 }
 
