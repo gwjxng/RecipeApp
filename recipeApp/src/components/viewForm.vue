@@ -15,7 +15,7 @@
             <span  class="form-subtitle">( {{ recipeDetails.difficulty }} )</span>
             <div class="form-group">
                 <label class="form-label" for="recipe-ingredients">Ingredients:</label>
-                <div class="ingredients-container">
+                <div class="view-ingredients-container">
                     <div v-for="(ingredient, index) in recipeIngredients" :key="index" class="ingredient-item">
                         <span>{{ ingredient.ingredient_name }}</span>
                     </div>
@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label class="form-label" for="recipe-description">Description:</label>
-                <div class="ingredients-container">
+                <div class="view-ingredients-container">
                     <span> {{ recipeDetails.instructions }} </span>
                 </div> 
             </div>

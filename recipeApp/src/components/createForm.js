@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import { API_BASE_URL } from './config.js'
+import { useAuthStore } from '../stores/authStore.js' 
 
 export function useFormLogic() {
   // form state
@@ -11,6 +12,8 @@ export function useFormLogic() {
   const newIngredient = ref('')
   const imageUrl = ref(null)
   const fileInput = ref(null)
+
+  const authStore = useAuthStore()
 
   const formErrors = ref({
     title: true,
@@ -94,13 +97,16 @@ export function useFormLogic() {
       return
     }
     
+    
+
     const recipeData = {
       title: recipeTitle.value,
       instructions: recipeDescription.value,
       difficulty: selectedDifficulty.value,
       image_url: imageUrl.value,
       created_date : new Date().toISOString().split('T')[0],
-      creator_name : 'Johnny Bravo',
+      creator_name : useAuthStore.getUsername,
+      creator_id : useAuthStore.getUserId
     }
 
     console.log('Recipe Data to Save:', recipeData)

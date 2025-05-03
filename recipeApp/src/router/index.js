@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../Webpages/Home.vue'
 import CreateForm from '../Webpages/createRecipe.vue'
 import ViewForm from '../Webpages/viewRecipe.vue'
+import Login from '../Webpages/Login.vue'
 
 const routes = [
   { path: '/', 
@@ -16,6 +17,12 @@ const routes = [
     path: '/view-recipe/:recipeId',
     name: 'ViewForm',
     component: ViewForm,
+    props: true
+  },
+  {
+    path: '/user',
+    name: 'Login',
+    component: Login,
     props: true
   }
 ]

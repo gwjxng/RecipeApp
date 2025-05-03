@@ -1,5 +1,8 @@
 <script setup>
-    import '../assets/searchbar.css'
+  import '../assets/searchbar.css'
+  import { useDashboardLogic } from './dashboardLogic.js'
+
+  const { fetchRecipes } = useDashboardLogic()
 </script>
 
 <template>
@@ -11,7 +14,7 @@
       placeholder="Search recipes..."
       class="search-input"
     />
-    <button class="search-button" @click="performSearch">
+    <button class="search-button" @click="fetchRecipes(searchQuery)">
         <img src="../assets/images/search_icon.png" class="search-icon" />
     </button>
     <filter class="filter-button" @click="performFilter">

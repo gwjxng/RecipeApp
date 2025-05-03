@@ -43,3 +43,18 @@
     height: 1em;
     object-fit: contain;
   }
+
+  .logout-button {
+    background-color: #f7f7f7;
+    color:black;
+  }
+  .logout-button:hover {
+    border-color: #f7f7f7;
+    color: #007bff;
+  }
+
+  .userdetails label{
+    margin-left: 1rem;
+    text-decoration: none;
+    color: #333;
+  }
