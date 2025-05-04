@@ -3,10 +3,12 @@
     import '../assets/dashboard.css'
     import { useDashboardLogic, toggleFilterLogic } from './dashboardLogic.js'
     import { useAuthStore } from '../stores/authStore.js'
+    import { useRoute } from 'vue-router'
 
     const authStore = useAuthStore()
+    const route = useRoute()
 
-    const { recipes, currentPage, totalPages, fetchRecipes, clearFilter } = useDashboardLogic()
+    const { recipes, currentPage, totalPages, fetchRecipes } = useDashboardLogic(authStore.getUserId)
     const { filterVisible, triggerFilterDropdown } = toggleFilterLogic()
 
     const selectedDifficulty = ref('')
@@ -24,7 +26,7 @@
             <button class="search-button" @click="fetchRecipes(searchQuery, selectedDifficulty, ingredientCount)">
                 <img src="../assets/images/search_icon.png" class="search-icon" />
             </button>
-            <img src="../assets/images/filter_icon.png" class="filter-icon" @click="triggerFilterDropdown()"/>
+            <img v-if="route.path !== '/your-recipes' "src="../assets/images/filter_icon.png" class="filter-icon" @click="triggerFilterDropdown()"/>
         </div>
     </body>
 
@@ -59,7 +61,10 @@
         <div class="dashboard-card" v-for="(item, index) in recipes" 
         :key="index"
         :style="item.image_url ? { backgroundImage: 'url(' + item.image_url + ')', backgroundSize: 'cover', backgroundPosition: 'center' } : {}">
-            <router-link :to="{ name: 'ViewForm', params: { recipeId: item.id } }" class="card-content">
+            <router-link :to="{
+                name: route.path.includes('/your-recipes') ? 'EditForm' : 'ViewForm',
+                params: { recipeId: item.id }
+            }" class="card-content">
                 <p>{{ item.title }}</p>
                 <h3>{{ item.creator_name }}</h3>
                 <h3> {{ item.created_date }}   </h3>

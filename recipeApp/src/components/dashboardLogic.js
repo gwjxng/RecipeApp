@@ -1,6 +1,7 @@
 import { ref, onMounted, watch } from 'vue'
 import axios from 'axios'
 import { API_BASE_URL } from '../components/config.js'
+import { useRoute } from 'vue-router'
 import '../assets/searchbar.css'
 
 export const filterVisible = ref(false)
@@ -8,12 +9,18 @@ export const searchQuery = ref('')
 export const selectedDifficulty = ref('')
 export const ingredientCount = ref('')
 
-export function useDashboardLogic(totalPages=5, emitPageChanged = null) {
+export function useDashboardLogic(creator_id=null) {
+    const totalPages = ref(5)
+  
 
+    const route = useRoute()
     const recipes = ref([])
     function fetchRecipes(searchQuery, selectedDifficulty, ingredientCount) {
-      let url = `${API_BASE_URL}/recipes`
 
+      let url = `${API_BASE_URL}/recipes`
+      if (route.path === '/your-recipes') {
+          url = `${API_BASE_URL}/recipes/your-recipes/${creator_id}`
+        }
       if (searchQuery && selectedDifficulty) {
         url += `?query=${searchQuery}&difficulty=${selectedDifficulty}`
       }

@@ -4,6 +4,7 @@ import CreateForm from '../Webpages/createRecipe.vue'
 import ViewForm from '../Webpages/viewRecipe.vue'
 import Login from '../Webpages/Login.vue'
 import yourRecipes from '../Webpages/yourRecipes.vue'
+import EditForm from '../Webpages/editRecipe.vue'
 
 const routes = [
   { path: '/', 
@@ -30,6 +31,12 @@ const routes = [
     path: '/your-recipes',
     name: 'YourRecipes',
     component: yourRecipes,
+    props: true
+  },
+  {
+    path: '/edit-recipe/:recipeId',
+    name: 'EditForm',
+    component: EditForm,
     props: true
   }
 ]
