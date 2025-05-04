@@ -48,7 +48,6 @@ export function useLoginLogic() {
             }).catch(error => {
                 console.error('Login error:')
                 console.error('Login failed:', error.response.data)
-                // Handle login failure (e.g., show error message)
             })
         } else {
         console.log('Validation failed')

@@ -11,7 +11,7 @@ export function editFormLogic() {
   const selectedDifficulty = ref('')
   const recipeTitle = ref('')
   const recipeDescription = ref('')
-  const recipeIngredients = ref([]) // includes { id, name }
+  const recipeIngredients = ref([])
   const newIngredient = ref('')
   const imageUrl = ref(null)
   const fileInput = ref(null)
@@ -25,7 +25,7 @@ export function editFormLogic() {
 
   function addIngredient() {
     if (newIngredient.value.trim() !== '') {
-      recipeIngredients.value.push({ name: newIngredient.value.trim(), id: null }) // null id for new unsaved
+      recipeIngredients.value.push({ name: newIngredient.value.trim(), id: null })
       newIngredient.value = ''
     }
   }
@@ -136,7 +136,6 @@ export function editFormLogic() {
       .then(() => {
         console.log('Recipe updated.')
 
-        // Save ingredients
         recipeIngredients.value.forEach(ingredient => {
             if (ingredient.id) {
               axios.put(`${API_BASE_URL}/ingredients/${ingredient.id}`, {

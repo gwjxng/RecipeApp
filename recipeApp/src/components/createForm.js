@@ -5,7 +5,6 @@ import { useAuthStore } from '../stores/authStore.js'
 import { useRouter } from 'vue-router'
 
 export function useFormLogic() {
-  // form state
   const selectedDifficulty = ref('')
   const recipeTitle = ref('')
   const recipeDescription = ref('')
