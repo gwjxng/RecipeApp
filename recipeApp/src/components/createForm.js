@@ -2,6 +2,7 @@ import { ref } from 'vue'
 import axios from 'axios'
 import { API_BASE_URL } from './config.js'
 import { useAuthStore } from '../stores/authStore.js' 
+import { useRouter } from 'vue-router'
 
 export function useFormLogic() {
   // form state
@@ -14,6 +15,7 @@ export function useFormLogic() {
   const fileInput = ref(null)
 
   const authStore = useAuthStore()
+  const router = useRouter()
 
   const formErrors = ref({
     title: true,
@@ -126,6 +128,7 @@ export function useFormLogic() {
         .then(() => {
           console.log('Ingredients saved!')
           clearForm()
+          router.push('/')
         })
         .catch(error => {
           console.error('Error saving ingredients:', error)

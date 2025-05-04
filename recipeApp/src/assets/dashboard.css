@@ -72,3 +72,11 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
+
+  .page span {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: black;
+    transition: background-color 0.3s ease;
+  }

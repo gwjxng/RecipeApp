@@ -8,7 +8,7 @@
     const authStore = useAuthStore()
     const route = useRoute()
 
-    const { recipes, currentPage, totalPages, fetchRecipes } = useDashboardLogic(authStore.getUserId)
+    const { recipes, currentPage, totalPages, displayedRecipes, fetchRecipes, nextPage, prevPage } = useDashboardLogic(authStore.getUserId)
     const { filterVisible, triggerFilterDropdown } = toggleFilterLogic()
 
     const selectedDifficulty = ref('')
@@ -58,7 +58,7 @@
     </div>
     <h2>Recipes</h2>
     <div class="dashboard">
-        <div class="dashboard-card" v-for="(item, index) in recipes" 
+        <div class="dashboard-card" v-for="(item, index) in displayedRecipes" 
         :key="index"
         :style="item.image_url ? { backgroundImage: 'url(' + item.image_url + ')', backgroundSize: 'cover', backgroundPosition: 'center' } : {}">
             <router-link :to="{
@@ -71,9 +71,10 @@
             </router-link>
         </div>
     </div>
-    <div class = "page">
-        <button class="page-button" @click="prevPage">Previous</button>
-        <h3 class="page-number">{{ currentPage }} / {{ totalPages }}</h3>
-        <button class="page-button" @click="nextPage">Next</button>
+
+    <div class="page">
+        <button class="page-button" @click="prevPage" :disabled="currentPage <= 1">Previous</button>
+        <span>{{ currentPage }} / {{ totalPages }}</span>
+        <button class="page-button" @click="nextPage" :disabled="currentPage >= totalPages">Next</button>
     </div>
 </template>
