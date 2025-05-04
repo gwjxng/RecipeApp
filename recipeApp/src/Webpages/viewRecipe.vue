@@ -4,7 +4,7 @@
 </script>
 
 <template>
-  <div id="app">
+  <div id="viewRecipe">
     <Header />
     <Form />
   </div>

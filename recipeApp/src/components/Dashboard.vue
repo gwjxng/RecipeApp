@@ -2,6 +2,9 @@
     import { ref } from 'vue'
     import '../assets/dashboard.css'
     import { useDashboardLogic, toggleFilterLogic } from './dashboardLogic.js'
+    import { useAuthStore } from '../stores/authStore.js'
+
+    const authStore = useAuthStore()
 
     const { recipes, currentPage, totalPages, fetchRecipes, clearFilter } = useDashboardLogic()
     const { filterVisible, triggerFilterDropdown } = toggleFilterLogic()
@@ -48,7 +51,7 @@
 
     </div>
 
-    <div class="create-recipe">
+    <div v-if="authStore.isAuthenticated" class="create-recipe">
         <router-link to="/create-recipe" class="create-recipe-button">Create Recipe</router-link>
     </div>
     <h2>Recipes</h2>

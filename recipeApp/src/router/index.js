@@ -3,6 +3,7 @@ import Home from '../Webpages/Home.vue'
 import CreateForm from '../Webpages/createRecipe.vue'
 import ViewForm from '../Webpages/viewRecipe.vue'
 import Login from '../Webpages/Login.vue'
+import yourRecipes from '../Webpages/yourRecipes.vue'
 
 const routes = [
   { path: '/', 
@@ -23,6 +24,12 @@ const routes = [
     path: '/user',
     name: 'Login',
     component: Login,
+    props: true
+  },
+  {
+    path: '/your-recipes',
+    name: 'YourRecipes',
+    component: yourRecipes,
     props: true
   }
 ]

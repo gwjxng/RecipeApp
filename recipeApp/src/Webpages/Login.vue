@@ -4,11 +4,8 @@
 </script>
 
 <template>
-  <div id="home">
+  <div id="Login">
     <Header />
     <Login />
   </div>
 </template>
-
-<style scoped>
-</style>
