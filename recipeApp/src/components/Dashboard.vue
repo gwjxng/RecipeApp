@@ -2,7 +2,7 @@
     import { ref } from 'vue'
     import '../assets/dashboard.css'
     import { useDashboardLogic, toggleFilterLogic } from './dashboardLogic.js'
-    import { useAuthStore } from '../stores/authStore.js'
+    import { useAuthStore } from '../stores/authstore.js'
     import { useRoute } from 'vue-router'
 
     const authStore = useAuthStore()

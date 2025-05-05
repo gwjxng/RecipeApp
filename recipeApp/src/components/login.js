@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import { API_BASE_URL } from './config.js'
-import { useAuthStore } from '../stores/authStore'
+import { useAuthStore } from '../stores/authstore.js'
 import { useRouter } from 'vue-router'
 
 export function useLoginLogic() {
