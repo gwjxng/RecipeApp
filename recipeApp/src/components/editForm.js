@@ -165,6 +165,23 @@ export function editFormLogic() {
     fetchIngredients()
   })
 
+  function cancelEdit() {
+    router.push('/your-recipes')
+  }
+
+  function deleteRecipe() {
+    if (confirm('Are you sure you want to delete this recipe? This cannot be undone.')) {
+      axios.delete(`${API_BASE_URL}/recipes/${recipeId}`)
+        .then(() => {
+          console.log('Recipe deleted.')
+          router.push('/your-recipes')
+        })
+        .catch(error => {
+          console.error('Error deleting recipe:', error)
+        })
+    }
+  }
+
   return {
     selectedDifficulty,
     recipeTitle,
@@ -178,6 +195,8 @@ export function editFormLogic() {
     removeIngredient,
     handleImageUpload,
     deleteImage,
-    handleUpdate
+    handleUpdate,
+    cancelEdit,
+    deleteRecipe
   }
 }

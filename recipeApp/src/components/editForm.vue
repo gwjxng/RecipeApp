@@ -1,6 +1,9 @@
 <script setup>
     import '../assets/createform.css';
     import { editFormLogic } from './editForm.js';
+    import { useRoute } from 'vue-router';
+
+    const route = useRoute();
 
     const { 
         selectedDifficulty,
@@ -15,7 +18,9 @@
         removeIngredient,
         handleImageUpload,
         deleteImage,
-        handleUpdate
+        handleUpdate,
+        cancelEdit,
+        deleteRecipe
     } = editFormLogic()
 </script>
 
@@ -102,6 +107,8 @@
                     </div>
                 </div>
                 <button type="submit" class="form-button">Save</button>
+                <button type="button" class="form-button" @click="cancelEdit">Cancel</button>
+                <button type="button" class="form-button" @click="deleteRecipe">Delete</button>
             </form>
         </div>    
     </div>
